@@ -23,7 +23,6 @@ var Stack = function() {
     var storageLength = someInstance.size();
     var removedElement = storage[storageLength - 1]
     delete storage[storageLength - 1];
-    console.log(storage)
     return removedElement;
   };
 
