@@ -34,13 +34,11 @@ var Queue = function() {
       }
     }
     delete storage[storageLength - 1]
-    console.log(storage)
     return removedElement;
   };
 
   someInstance.size = function() {
     var keys = Object.keys(storage);
-    // console.log(keys.length)
     return keys.length;
   };
 
