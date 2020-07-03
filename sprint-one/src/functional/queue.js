@@ -12,11 +12,13 @@ var Queue = function () {
   someInstance.enqueue = function(value) {
     if (storage[0] === undefined) {
       storage[0] = value;
+      someInstance.count++;
     } else {
       var storageLength = someInstance.size();
       for (var i = storageLength; i >= 0; i--) {
         if (storage[i] === undefined) {
           storage[i] = value;
+          someInstance.count++;
         }
       }
     }
@@ -37,12 +39,14 @@ var Queue = function () {
       }
     }
     delete storage[storageLength - 1]
+    if (someInstance.count !== 0) {
+      someInstance.count--;
+    }
     return removedElement;
   };
 
   someInstance.size = function() {
-    var keys = Object.keys(storage);
-    return keys.length;
+    return someInstance.count;
   };
 
   return someInstance;
