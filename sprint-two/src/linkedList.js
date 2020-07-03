@@ -1,15 +1,16 @@
-var LinkedList = function () {
-  var list = {};
+let LinkedList = function () {
+  let list = {};
   list.head = null;
   list.tail = null;
 
   list.addToTail = function (value) {
-    let newNode = new Node(value);
+    let newNode = new LinkedListNode(value);
     if (this.head === null) {
       this.head = newNode;
       this.tail = newNode;
     } else {
       let currentNode = this.head;
+      // console.log(currentNode)
       while (currentNode.next !== null) {
         currentNode = currentNode.next;
 
@@ -44,8 +45,8 @@ var LinkedList = function () {
   return list;
 };
 
-var Node = function (value) {
-  var node = {};
+let LinkedListNode = function (value) {
+  let node = {};
   node.value = value;
   node.next = null;
   return node;

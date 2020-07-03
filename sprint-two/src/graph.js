@@ -4,7 +4,7 @@
 //3: {neighbors: [1, 2]}
 
 // Instantiate a new graph
-var Graph = function () {
+let Graph = function () {
   //all nodes = array or object
   this.nodes = {};
 };
@@ -13,7 +13,7 @@ var Graph = function () {
 Graph.prototype.addNode = function (node) {
   //get value of node
   //assign value as key to equal the node
-  var newNode = new Node(node)
+  let newNode = new GraphNode(node)
   this.nodes[node] = newNode;
 };
 
@@ -32,7 +32,7 @@ Graph.prototype.contains = function (node) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function (node) {
   //create variable for edges []
-  var edgeArray = this.nodes[node].edges;
+  let edgeArray = this.nodes[node].edges;
   //iterate through arrays
   // for (let keys in this.nodes) {
   for (let i = 0; i < edgeArray.length; i++) {
@@ -81,13 +81,13 @@ Graph.prototype.removeEdge = function (fromNode, toNode) {
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function (cb) {
   //create keys variable = object.keys(this.nodes);
-  for (var keys in this.nodes) {
+  for (let keys in this.nodes) {
     cb(this.nodes[keys].value)
   }
 };
 
-var Node = function (value) {
-  var node = {};
+let GraphNode = function (value) {
+  let node = {};
   node.value = value;
   node.edges = [];
   return node
