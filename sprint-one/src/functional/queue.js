@@ -1,8 +1,11 @@
-var Queue = function() {
-  var someInstance = {};
+var Queue = function () {
+  var someInstance = {
+    count: 0
+  };
 
   // Use an object with numeric keys to store values
-  var storage = {};
+  var storage = {
+  };
 
   // Implement the methods below
 
@@ -43,4 +46,5 @@ var Queue = function() {
   };
 
   return someInstance;
+
 };

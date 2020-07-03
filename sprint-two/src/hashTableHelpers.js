@@ -1,4 +1,21 @@
 /*
+take an argument
+creating an array called storage
+creating an object called limitedArray
+  invokes limitedArray.get
+    invokes checklimit with index
+    if good returns the original object
+    returns a value inside storage at index index variable
+
+    set
+    reassign a value to the storage at index
+
+    each takes in a function an argument
+    function is invoked and takes value, index and collection
+
+    //lit
+
+
  ********** NOTE: **********
  * Do not edit this code unless you see a bug!
  */
@@ -11,25 +28,25 @@
 //   limitedArray.set(3, 'hi');
 //   limitedArray.get(3); // returns 'hi'
 
-var LimitedArray = function(limit) {
+var LimitedArray = function (limit) {
   var storage = [];
 
   var limitedArray = {};
-  limitedArray.get = function(index) {
+  limitedArray.get = function (index) {
     checkLimit(index);
     return storage[index];
   };
-  limitedArray.set = function(index, value) {
+  limitedArray.set = function (index, value) {
     checkLimit(index);
     storage[index] = value;
   };
-  limitedArray.each = function(callback) {
+  limitedArray.each = function (callback) {
     for (var i = 0; i < storage.length; i++) {
       callback(storage[i], i, storage);
     }
   };
 
-  var checkLimit = function(index) {
+  var checkLimit = function (index) {
     if (typeof index !== 'number') {
       throw new Error('setter requires a numeric index for its first argument');
     }
@@ -44,7 +61,7 @@ var LimitedArray = function(limit) {
 // This is a "hashing function". You don't need to worry about it, just use it
 // to turn any string into an integer that is well-distributed between the
 // numbers 0 and `max`
-var getIndexBelowMaxForKey = function(str, max) {
+var getIndexBelowMaxForKey = function (str, max) {
   var hash = 0;
   for (var i = 0; i < str.length; i++) {
     hash = (hash << 5) + hash + str.charCodeAt(i);
