@@ -127,20 +127,77 @@ class ReviewQueue {
   }
 }
 //-----------------------DOUBLE LINKED LIST REVIEW-----------------------
-// head property
-// tail property
-// addToTail method
-// removeHead method
-// contains  method
-// addToHead method
-// removeTail method
+let ReviewLinkedListNode = function (value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
 
-//create node
-//value
-//left
-//right
-
-//instantiate
-//head
-//tail
-//
+class ReviewLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+  addToTail(value) {
+    let newNode = new ReviewLinkedListNode(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.right = newNode;
+      newNode.left = this.tail;
+      this.tail = newNode;
+    }
+    this.length++;
+  }
+  removeTail() {
+    if (!this.tail) {
+      return
+    } else {
+      let newTail = this.tail.left;
+      newTail.right = null;
+      this.tail = newTail;
+      this.length--;
+    }
+  }
+  removeHead() {
+    if (!this.head) {
+      return;
+    } else if (!this.head.right) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let newHead = this.head.right;
+      newHead.left = null;
+      this.head = newHead;
+    }
+    this.length--;
+  }
+  contains(value) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return true
+      }
+      currentNode = currentNode.right;
+    }
+    return false;
+  }
+  addToHead(value) {
+    let newNode = new ReviewLinkedListNode(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      let notHead = this.head;
+      notHead.left = newNode;
+      newNode.right = notHead;
+      this.head = newNode;
+    }
+    this.length++;
+  }
+  size() {
+    return this.length;
+  }
+}
