@@ -1,18 +1,4 @@
 /*
-create a stack
-  push
-  pop
-  size
-create queue
-  enqueue
-  dequeue
-  size
-create linked list
-  head property
-  tail property
-  addToTail method
-  removeHead method
-  contains  method
 create double linked list
   head property
   tail property
@@ -58,12 +44,8 @@ binary search tree
   complte the bloom filter by tonight
 */
 
-// create a stack LIFO
-//   push
-//   pop
-//   size
-
-//create NodeStack
+//-----------------------STACK REVIEW-----------------------
+/*all methods are O(1) because all methods are completed in one step*/
 let ReviewNodeStack = function (value) {
   this.value = value;
   this.left = null;
@@ -106,3 +88,59 @@ class ReviewStack {
     return this.length;
   }
 }
+//-----------------------QUEUE REVIEW-----------------------
+/*
+all methods are O(1), regardless the size of the queue, it takes the same amount of time every invocation
+*/
+let ReviewQueueNode = function (value) {
+  this.value = value;
+  this.next = null;
+}
+
+class ReviewQueue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.length = null;
+  }
+  enqueue(value) {
+    let newNode = new ReviewQueueNode(value);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    this.length++;
+  }
+  dequeue() {
+    if (!this.first) {
+      return;
+    }
+    let nextNode = this.first.next;
+    this.first = nextNode;
+    this.length--;
+  }
+  size() {
+    return this.length;
+  }
+}
+//-----------------------DOUBLE LINKED LIST REVIEW-----------------------
+// head property
+// tail property
+// addToTail method
+// removeHead method
+// contains  method
+// addToHead method
+// removeTail method
+
+//create node
+//value
+//left
+//right
+
+//instantiate
+//head
+//tail
+//
