@@ -52,7 +52,6 @@ binaryMethods.contains = function (value) {
 
 binaryMethods.depthFirstLog = function (func) {
   function accessNodes(node) {
-    console.log(node.value)
     if (!node.value) {
       return;
     }
