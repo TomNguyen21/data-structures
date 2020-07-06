@@ -1,12 +1,4 @@
 /*
-create double linked list
-  head property
-  tail property
-  addToTail method
-  removeHead method
-  contains  method
-  addToHead method
-  removeTail method
 create tree
   children property
   parent property
@@ -199,5 +191,47 @@ class ReviewLinkedList {
   }
   size() {
     return this.length;
+  }
+}
+//-----------------------GRAPH REVIEW-----------------------
+let ReviewGraphNode = function (value) {
+  this.value = value;
+  this.neighbors = {}
+}
+
+class ReviewGraph {
+  constructor() {
+    this.storage = {};
+  }
+  addNode(value) {
+    let newNode = new ReviewGraphNode(value);
+    this.storage[value] = newNode;
+  }
+  contains(value) {
+    return this.storage.hasOwnProperty(value)
+  }
+  removeNode(value) {
+    if (!this.storage[value]) {
+      console.log('Invalid Number')
+    }
+    let deleteEdges = Object.keys(this.storage[value].neighbors)
+    deleteEdges.forEach(number => {
+      delete this.storage[number].neighbors[value]
+    })
+    delete this.storage[value]
+  }
+  addEdge(value1, value2) {
+    if (!this.storage[value1] || !this.storage[value1]) {
+      return 'Value does not exists'
+    }
+    this.storage[value1].neighbors[value2] = true;
+    this.storage[value2].neighbors[value1] = true;
+  }
+  hasEdge(value1, value2) {
+    return (this.storage[value1].neighbors[value2] && this.storage[value2].neighbors[value1]) ? true : false
+  }
+  removeEdge(value1, value2) {
+    delete this.storage[value1].neighbors[value2];
+    delete this.storage[value2].neighbors[value1];
   }
 }
