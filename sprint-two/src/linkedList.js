@@ -4,71 +4,86 @@ let LinkedList = function () {
   list.tail = null;
 
   list.addToTail = function (value) {
-    let newNode = new LinkedListNode(value);
+    let newNode = LinkedListNode(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+  };
+
+  list.removeTail = function () {
+    if (!this.tail) {
+      return;
+    }
+    let temp = this.tail.value;
+    if (this.tail.value === this.head.value) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = this.tail.prev;
+      this.tail.next = null;
+    }
+    return temp;
+  };
+
+  list.removeHead = function () {
+    if (!this.head) {
+      return
+    }
+    let temp = this.head.value;
+    if (this.head.value === this.tail.value) {
+      this.head = null;
+      this.tail = null
+    } else {
+      this.head = this.head.next;
+      this.head.prev = null;
+    }
+    return temp
+  };
+
+  list.addToHead = function (value) {
+    let newNode = LinkedListNode(value)
     if (this.head === null) {
       this.head = newNode;
       this.tail = newNode;
     } else {
-      let currentNode = this.head;
-      // console.log(currentNode)
-      while (currentNode.next !== null) {
-        currentNode = currentNode.next;
-
-      }
-      currentNode.next = newNode
-      this.tail = newNode;
-      //alternate way of doing it?
-      // list.tail.next = newNode;
+      newNode.next = this.head;
+      this.head.prev = newNode;
+      this.head = newNode;
     }
-
-  };
-
-  list.removeHead = function () {
-    let currentHead = this.head
-    this.head = currentHead.next
-    return currentHead.value
-  };
+  }
 
   list.contains = function (target) {
     let currentNode = this.head;
-    while (currentNode.next !== null) {
+    while (currentNode !== null) {
       if (currentNode.value === target) {
-        return true
+        return true;
       }
-      currentNode = currentNode.next
+      currentNode = currentNode.next;
     }
-    if (currentNode.value === target) {
-      return true
-    }
-    return false
+    return false;
   };
-  return list;
-};
+  return list
+
+}
 
 let LinkedListNode = function (value) {
   let node = {};
   node.value = value;
   node.next = null;
+  node.prev = null;
   return node;
 };
-
-/*
-call Node to create a new object {}
-add to original list object
-if this.head is null newNode is set and tail
-else set only tail
-*/
-
-
-
 /*
  * Complexity: What is the time complexity of the above functions?
- addToTail
- O(n) because its loopede through all nodes until the tail
-removeHead. Our method is O(n) but can also be O(1). We will come back
-O(1) deletes the head instantly because we have access to it
-contains
-O(n) It loops until the end to find the target
- */
 
- //does this work
+addToTail O(1)   adding the tail can be done in one action since we have a reference to the last node
+removeTail O(1)  removing the tail can be done in one action since we have a reference to the last node
+addToHead O(1)  adding the to the head can be done in one action since we have a reference to the head node
+removeHead O(1)  removing the to the head can be done in one action since we have a reference to the head node
+contains O(n) we need to traverse through the whole linked list to match a value until the next value is null
+ */
