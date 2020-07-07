@@ -1,21 +1,4 @@
 /*
-take an argument
-creating an array called storage
-creating an object called limitedArray
-  invokes limitedArray.get
-    invokes checklimit with index
-    if good returns the original object
-    returns a value inside storage at index index variable
-
-    set
-    reassign a value to the storage at index
-
-    each takes in a function an argument
-    function is invoked and takes value, index and collection
-
-    //lit
-
-
  ********** NOTE: **********
  * Do not edit this code unless you see a bug!
  */
@@ -73,4 +56,13 @@ var getIndexBelowMaxForKey = function (str, max) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ get O(1)
+goes directly to the index inside storage
+ set O(1)
+ assigns the value to storage[index]
+ each O(n)
+iterates through the storage array
+ checkLimit O(1) checks the limit argument and the argument this._limit
+ getIndexBelowMaxForKey O(n)
+ creates a value based on the length of the string
  */

@@ -1,18 +1,4 @@
 /*
-create tree
-  children property
-  parent property
-  addChild method
-  containsMethod
-  remove parent method
-create graph
-  //addNode method
-  //contains method
-  //removeNode method
-  //addEdge method
-  //hasEdge method
-  //removeEdge method
-  //forEach method
 create set
   add method
   contains method
@@ -235,3 +221,53 @@ class ReviewGraph {
     delete this.storage[value2].neighbors[value1];
   }
 }
+
+//-----------------------SET REVIEW-----------------------
+let ReviewSetNode = function () {
+  this.storage = {};
+}
+// create set
+class ReviewSet {
+  constructor() {
+    this.storage = {
+      string: [],
+      number: [],
+      array: [],
+      object: []
+    };
+  }
+  add(value) {
+    //create a function() for number and string
+    if (typeof value === 'number') {
+      (this.storage.number.contains(value)) ? console.log('invalid input') : this.storage.number.push(value)
+    } else if (typeof value === 'number') {
+
+    } else if (Array.isArray(value)) {
+
+    } else if (typeof value === 'object') {
+
+    }
+    function iterator(value) {
+
+    }
+  }
+  contains() {
+
+  }
+  remove() {
+
+  }
+}
+
+function isArray(array) {
+
+}
+
+function isObject(object) {
+
+}
+//   add method. takes in a set and a value to put that set in
+//   contains method. takes an s and a x
+//   remove method takes an s and an x
+//   numbers can handle numbers too
+//   capable of input objects of any type
