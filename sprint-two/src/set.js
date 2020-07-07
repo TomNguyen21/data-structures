@@ -7,14 +7,11 @@ var Set = function () {
 var setPrototype = {};
 
 setPrototype.add = function (item) {
-  //this.storage.push(item)
   this._storage.push(item)
 };
 
 setPrototype.contains = function (item) {
-  // let storageArray = this.storage
   let storageArray = this._storage;
-  // for let i = 0; i < storageArray.length; i++
   for (let i = 0; i < storageArray.length; i++) {
     if (storageArray[i] = item) {
       return true;
