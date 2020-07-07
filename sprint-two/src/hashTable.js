@@ -13,12 +13,13 @@ HashTable.prototype.insert = function (k, v) {
   for (let i = 0; i < this.storage1[index].length; i++) {
     if (this.storage1[index][i][0] === k) {
       this.storage1[index][i][1] = v;
-      validK = true;
+      isKeyInStorage = true;
       break;
     }
   }
   if (!isKeyInStorage) {
     this.storage1[index].push([k, v]);
+    console.log(this.storage1[index])
   }
   // this.storage1[index][k] = v
 };

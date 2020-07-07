@@ -3,6 +3,11 @@ let LinkedList = function () {
   list.head = null;
   list.tail = null;
 
+  list.addToHead = function(value) {
+    let newNode = new LinkedListNode(value);
+    newNode.next = this.head;
+    this.head = newNode;
+  };
   list.addToTail = function (value) {
     let newNode = new LinkedListNode(value);
     if (this.head === null) {
@@ -23,6 +28,17 @@ let LinkedList = function () {
 
   };
 
+  list.removeTail = function() {
+    let currentNode = this.head;
+    let removedNode = this.tail;
+    while (currentNode.next !== null) {
+      if (currentNode.next === this.tail) {
+        this.tail = currentNode;
+        currentNode.next = null;
+      }
+    }
+    return removedNode.value;
+  };
   list.removeHead = function () {
     let currentHead = this.head
     this.head = currentHead.next
