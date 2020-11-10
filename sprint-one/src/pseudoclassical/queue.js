@@ -4,7 +4,7 @@ var Queue = function() {
   this.storage = {};
   this.counter = 0;
 };
-console.log(Queue)
+
 Queue.prototype.enqueue = function(value) {
   this.storage[this.counter] = value;
   this.counter++;
